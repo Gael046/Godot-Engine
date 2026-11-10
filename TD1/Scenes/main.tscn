@@ -1,21 +1,24 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://bytdkhpmpdp8i"]
 
-[ext_resource type="Texture2D" path="res://KennyAssets/SpaceShooterRedux/Backgrounds/purple.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dtnl7mrf7dbqe" path="res://KennyAssets/SpaceShooterRedux/Backgrounds/purple.png" id="1"]
 [ext_resource type="PackedScene" path="res://Scenes/enemy_spawner.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://Scenes/player.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dsc3qbidoshdp" path="res://Scenes/player.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bb830e54nxi8f" path="res://Scenes/hud.tscn" id="4_jjvhh"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=335236134]
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=538543751]
 texture_repeat = 2
 texture = ExtResource("1")
 region_enabled = true
 region_rect = Rect2(0, 0, 1024, 2304)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=508351635]
 
-[node name="EnemySpawner" parent="." instance=ExtResource("3")]
+[node name="EnemySpawner" parent="." unique_id=669801938 instance=ExtResource("3")]
 position = Vector2(0, -850)
 
-[node name="Player" parent="." instance=ExtResource("4")]
+[node name="Player" parent="." unique_id=148790817 instance=ExtResource("4")]
 position = Vector2(0, 480)
+
+[node name="Hud" parent="." unique_id=1156008407 instance=ExtResource("4_jjvhh")]

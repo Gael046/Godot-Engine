@@ -15,8 +15,8 @@ var life: int
 
 func _ready() -> void:
 	life = max_life
+	GameManager.player_life_changed.emit(life)
 
-# --- 1.2 : déplacement. Le Player a une collision, donc on le bouge dans _physics_process
 func _physics_process(delta: float) -> void:
 	var target_velocity: Vector2 = read_direction() * speed
 	# Juice : accélération et freinage progressifs, le vaisseau a du poids
@@ -29,16 +29,13 @@ func _physics_process(delta: float) -> void:
 func read_direction() -> Vector2:
 	var direction: Vector2 = Vector2.ZERO
 	direction.x = Input.get_axis("move_left", "move_right")
-	# Au doigt (ou à la souris) : on rejoint la position X du doigt, en ralentissant à l'approche
 	if Input.is_action_pressed("touch"):
 		var distance_to_finger: float = get_global_mouse_position().x - global_position.x
 		direction.x = clamp(distance_to_finger / 60.0, -1.0, 1.0)
 	return direction
 
-# --- 1.4 : dégâts (appelé par les ennemis)
 func take_damage(amount: int) -> void:
 	life -= amount
+	GameManager.player_life_changed.emit(life)
 	if life <= 0:
-		# Pour l'instant, la partie recommence. Le vrai game over arrive en 1.5
-		# call_deferred : on est en pleine collision, on recharge à la fin de la frame
-		get_tree().reload_current_scene.call_deferred()
+		GameManager.trigger_game_over()

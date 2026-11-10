@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bb830e54nxi8f"]
+
+[ext_resource type="Script" uid="uid://dlfddogs8ig4o" path="res://Scripts/hud.gd" id="1_bjfho"]
+[ext_resource type="FontFile" uid="uid://kebcj1dqllk2" path="res://KennyAssets/SpaceShooterRedux/Bonus/kenvector_future.ttf" id="1_e0onf"]
+[ext_resource type="Texture2D" uid="uid://dkw1qi8pwrgg3" path="res://KennyAssets/SpaceShooterRedux/UI/playerLife1_blue.png" id="2_fccik"]
+
+[node name="Hud" type="CanvasLayer" unique_id=1156008407]
+process_mode = 3
+script = ExtResource("1_bjfho")
+
+[node name="Label" type="Label" parent="." unique_id=149724642]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -67.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("1_e0onf")
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=499038427]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1964506906]
+layout_mode = 2
+texture = ExtResource("2_fccik")
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer" unique_id=144286244]
+layout_mode = 2
+texture = ExtResource("2_fccik")
+
+[node name="TextureRect3" type="TextureRect" parent="HBoxContainer" unique_id=1216990329]
+layout_mode = 2
+texture = ExtResource("2_fccik")
+
+[node name="Panel" type="Panel" parent="." unique_id=718220839]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Panel" unique_id=1754889111]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 1185.0
+offset_right = 249.0
+offset_bottom = 1216.0
+text = "Rejouer"
+
+[node name="Button2" type="Button" parent="Panel" unique_id=1647539859]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 1181.0
+offset_right = 520.0
+offset_bottom = 1212.0
+text = "Quitter"
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/Button2" to="." method="_on_button_2_pressed"]
