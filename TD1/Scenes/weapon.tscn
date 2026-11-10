@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu8yfc6a6q73i"]
+
+[ext_resource type="Script" uid="uid://e7cxfi1v0vb5" path="res://Scripts/weapon.gd" id="1"]
+[ext_resource type="AudioStream" path="res://Effects/Sounds/sfx_laser.tres" id="2"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1")
+time_between_shots = 0.6
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2")
+volume_db = -8.0
