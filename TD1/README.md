@@ -532,4 +532,7 @@ Piochez librement. Plus vous montez, plus ça rapporte. Remplissez la colonne **
 
 - **Nom / Prénom** : Crespel Gaël
 - **Vidéo avant / après** : déposez vos deux vidéos ou GIF dans `Rendu/` et affichez-les ici.
+<p align="center">
+  <video src="recording-2026-11-10-17-30-40.webm" alt="Aperçu du jeu" autoplay loop muted playsinline width="100%"></video>
+</p>
 - **Ma carte de juice** : dans la colonne **Fait** de la [carte de juice](#24-carte-de-juice), mettez ✅ si vous l'avez fait, ❌ sinon (copiez-collez l'emoji). Pour chaque ✅, indiquez ici où (script, fonction).
