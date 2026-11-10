@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://pdapwyic7a2l" path="res://Scripts/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cofylary07q2b" path="res://KennyAssets/SpaceShooterRedux/playerShip1_blue.png" id="2"]
+[ext_resource type="PackedScene" path="res://Effects/explosion.tscn" id="2_3smsa"]
 [ext_resource type="PackedScene" uid="uid://bu8yfc6a6q73i" path="res://Scenes/weapon.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://Scenes/bullet.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://Effects/muzzle_flash.tscn" id="5"]
+[ext_resource type="AudioStream" path="res://Effects/Sounds/sfx_player_hurt.tres" id="6_x3wgy"]
 
 [sub_resource type="RectangleShape2D" id="hitbox"]
 size = Vector2(56, 44)
@@ -12,6 +14,7 @@ size = Vector2(56, 44)
 [node name="Player" type="Area2D" unique_id=40171719]
 collision_mask = 0
 script = ExtResource("1")
+explosion_scene = ExtResource("2_3smsa")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1694407630]
 texture = ExtResource("2")
@@ -23,3 +26,6 @@ shape = SubResource("hitbox")
 position = Vector2(0, -45)
 bullet_scene = ExtResource("4")
 muzzle_flash_scene = ExtResource("5")
+
+[node name="Damage" type="AudioStreamPlayer2D" parent="." unique_id=610018083]
+stream = ExtResource("6_x3wgy")

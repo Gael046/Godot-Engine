@@ -1,25 +1,26 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://t7sxulr816a0"]
 
-[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1"]
-[ext_resource type="Texture2D" path="res://KennyAssets/SpaceShooterRedux/Enemies/enemyRed1.png" id="2"]
+[ext_resource type="Script" uid="uid://ch4fslvgy3upq" path="res://Scripts/enemy.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://ca513f5s5u4ji" path="res://KennyAssets/SpaceShooterRedux/Enemies/enemyRed1.png" id="2"]
 [ext_resource type="PackedScene" path="res://Effects/explosion.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://Effects/debris.tscn" id="3_287tu"]
 
 [sub_resource type="RectangleShape2D" id="hitbox"]
 size = Vector2(84, 70)
 
-[node name="Enemy" type="Area2D"]
+[node name="Enemy" type="Area2D" unique_id=1350374109]
 collision_layer = 2
-collision_mask = 1
 script = ExtResource("1")
 explosion_scene = ExtResource("3")
+debri_scene = ExtResource("3_287tu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=373592791]
 texture = ExtResource("2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1553166159]
 shape = SubResource("hitbox")
 
-[node name="FlashTimer" type="Timer" parent="."]
+[node name="FlashTimer" type="Timer" parent="." unique_id=904579641]
 wait_time = 0.06
 one_shot = true
 

@@ -507,22 +507,22 @@ Piochez librement. Plus vous montez, plus ça rapporte. Remplissez la colonne **
 
 | | Effet | Vu en | Fait |
 |---|---|---|:---:|
-| 🥉 | Flash blanc à l'impact | 1.4 |  |
-| 🥉 | Son de tir avec pitch aléatoire | 1.3 |  |
-| 🥉 | Explosion et étincelles d'impact | 1.4 |  |
-| 🥉 | Score qui punch, flash rouge au dégât | 1.5 |  |
-| 🥈 | Screen shake par trauma | 2.1 |  |
-| 🥈 | Hitstop | 2.1 |  |
-| 🥈 | Débris (permanence) | 2.2 |  |
-| 🥈 | Invincibilité qui clignote | 2.2 |  |
-| 🥈 | Pop d'apparition, squash & stretch | 2.3 |  |
-| 🥇 | Ralenti de game over, panneau qui rebondit | 2.3 |  |
-| 🥇 | Recul du vaisseau à chaque tir (le sprite recule puis revient) | Libre |  |
-| 🥇 | Score flottant (« +100 ») qui monte et disparaît à la position de l'ennemi | Libre |  |
-| 🥇 | Traînée derrière les tirs (`Line2D` ou particules) | Libre |  |
-| 🥇 | Shake plus doux avec `FastNoiseLite` au lieu de `randf_range` | Libre |  |
-| 🥇 | Le fond défile plus vite quand la difficulté monte | Libre |  |
-| 🥇 | Vibration dosée selon l'événement (tir, coup, mort) | Libre |  |
+| 🥉 | Flash blanc à l'impact | 1.4 | ✅  enemy.gd|
+| 🥉 | Son de tir avec pitch aléatoire | 1.3 | ✅ player.gd|
+| 🥉 | Explosion et étincelles d'impact | 1.4 | ✅ enemy.gd, bullet.gd|
+| 🥉 | Score qui punch, flash rouge au dégât | 1.5 | ✅ hud.gd|
+| 🥈 | Screen shake par trauma | 2.1 | ✅ camera.gd|
+| 🥈 | Hitstop | 2.1 | ✅ game_manager.gd|
+| 🥈 | Débris (permanence) | 2.2 | ✅ enemy.gd|
+| 🥈 | Invincibilité qui clignote | 2.2 | ✅ player.gd|
+| 🥈 | Pop d'apparition, squash & stretch | 2.3 | ✅ player.gd, enemy.gd|
+| 🥇 | Ralenti de game over, panneau qui rebondit | 2.3 | ✅ game_manager.gd|
+| 🥇 | Recul du vaisseau à chaque tir (le sprite recule puis revient) | Libre | ❌ |
+| 🥇 | Score flottant (« +100 ») qui monte et disparaît à la position de l'ennemi | Libre | ❌ |
+| 🥇 | Traînée derrière les tirs (`Line2D` ou particules) | Libre | ❌ |
+| 🥇 | Shake plus doux avec `FastNoiseLite` au lieu de `randf_range` | Libre | ❌ |
+| 🥇 | Le fond défile plus vite quand la difficulté monte | Libre | ❌ |
+| 🥇 | Vibration dosée selon l'événement (tir, coup, mort) | Libre | ❌ |
 
 </div>
 
@@ -530,6 +530,6 @@ Piochez librement. Plus vous montez, plus ça rapporte. Remplissez la colonne **
 
 # 3. 📋 Votre rendu (à compléter dans ce README)
 
-- **Nom / Prénom** : …
+- **Nom / Prénom** : Crespel Gaël
 - **Vidéo avant / après** : déposez vos deux vidéos ou GIF dans `Rendu/` et affichez-les ici.
 - **Ma carte de juice** : dans la colonne **Fait** de la [carte de juice](#24-carte-de-juice), mettez ✅ si vous l'avez fait, ❌ sinon (copiez-collez l'emoji). Pour chaque ✅, indiquez ici où (script, fonction).

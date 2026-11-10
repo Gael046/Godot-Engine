@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bytdkhpmpdp8i"]
 
 [ext_resource type="Texture2D" uid="uid://dtnl7mrf7dbqe" path="res://KennyAssets/SpaceShooterRedux/Backgrounds/purple.png" id="1"]
+[ext_resource type="Script" uid="uid://bkbxv6jy3pjol" path="res://Scripts/camera_shake.gd" id="2_kry3j"]
 [ext_resource type="PackedScene" path="res://Scenes/enemy_spawner.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://dsc3qbidoshdp" path="res://Scenes/player.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://bb830e54nxi8f" path="res://Scenes/hud.tscn" id="4_jjvhh"]
@@ -14,6 +15,9 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1024, 2304)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=508351635]
+process_mode = 3
+ignore_rotation = false
+script = ExtResource("2_kry3j")
 
 [node name="EnemySpawner" parent="." unique_id=669801938 instance=ExtResource("3")]
 position = Vector2(0, -850)

@@ -7,23 +7,27 @@ extends Area2D
 @export var max_tilt_degrees: float = 15.0
 @export var x_limit: float = 320.0
 @export var max_life: int = 3
+@export var explosion_scene: PackedScene
+@export var invincibility_duration: float = 1.0
+
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var damage: AudioStreamPlayer2D = $Damage
 
 var velocity: Vector2 = Vector2.ZERO
 var life: int
-
-@onready var sprite: Sprite2D = $Sprite2D
+var invincibility_time: float = 1.0
 
 func _ready() -> void:
 	life = max_life
 	GameManager.player_life_changed.emit(life)
 
 func _physics_process(delta: float) -> void:
+	if invincibility_time > 0.0:
+		invincibility_time -= delta
 	var target_velocity: Vector2 = read_direction() * speed
-	# Juice : accélération et freinage progressifs, le vaisseau a du poids
 	velocity = velocity.move_toward(target_velocity, acceleration * delta)
 	position += velocity * delta
 	position.x = clamp(position.x, -x_limit, x_limit)
-	# Juice : le vaisseau s'incline dans le sens du mouvement
 	sprite.rotation = deg_to_rad(max_tilt_degrees) * velocity.x / speed
 
 func read_direction() -> Vector2:
@@ -35,7 +39,24 @@ func read_direction() -> Vector2:
 	return direction
 
 func take_damage(amount: int) -> void:
+	if invincibility_time == 1.0:
+		return
+	
+	invincibility_time = 0.0
+	var blink_tween: Tween = get_tree().create_tween()
+	blink_tween.tween_property(sprite, "modulate:a", 0.4, 0.25)
+	blink_tween.tween_property(sprite, "modulate:a", 1.0, 0.25)
+	blink_tween.set_loops(2)
+	blink_tween.play()
+	
 	life -= amount
+	damage.play()
+	GameManager.hitstop(0.1)
 	GameManager.player_life_changed.emit(life)
+	
 	if life <= 0:
+		var explosion: Node2D = explosion_scene.instantiate()
+		explosion.global_position = global_position
+		explosion.scale = Vector2.ONE * 2.0
+		get_tree().current_scene.add_child(explosion)
 		GameManager.trigger_game_over()

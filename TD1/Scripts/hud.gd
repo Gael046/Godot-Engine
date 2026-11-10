@@ -32,6 +32,13 @@ func _on_player_life_changed(new_life: int) -> void:
 		life_container.get_child(i).visible = i < new_life
 	if(new_life == 0):
 		panel.visible = true
+		panel.pivot_offset = panel.size / 2
+		panel.scale = Vector2(0.3, 0.3)
+		panel.modulate.a = 0.0
+		var panel_tween: Tween = get_tree().create_tween()
+		panel_tween.set_parallel(true)
+		panel_tween.tween_property(panel, "scale", Vector2.ONE, 0.4).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		panel_tween.tween_property(panel, "modulate:a", 1.0, 0.3)
 
 func _on_button_pressed() -> void:
 	GameManager.restart()
